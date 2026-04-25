@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MME Dashboard | Quotes, Favorites & Orders</title>
+    <meta name="description" content="Customer dashboard for MME column quotes, favorites, previous orders, and recommendations.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark">MME</span><div><strong>Customer Dashboard</strong><span>Quotes, favorites, orders and recommendations</span></div></div>
+      <nav aria-label="Primary"><a href="index.html#catalog">Catalog</a><a href="replacement.html">Replacement</a><a href="dashboard.html">Dashboard</a><a href="index.html#cart">Quote</a></nav>
+    </header>
+    <main class="dashboard-page">
+      <section class="hero dashboard-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Customer workspace</p>
+          <h1>Manage your column work in one place.</h1>
+          <p>Track current quote items, saved favorites, previous quotations, reorder candidates, and recommended accessories.</p>
+          <div class="hero-actions"><a class="button primary" href="index.html#catalog">Find columns</a><a class="button ghost" href="replacement.html">Find equivalent</a></div>
+        </div>
+        <div class="dashboard-summary">
+          <div><span>Current quote</span><strong id="dashQuoteCount">0</strong></div>
+          <div><span>Favorites</span><strong id="dashFavoriteCount">0</strong></div>
+          <div><span>Previous orders</span><strong id="dashOrderCount">0</strong></div>
+          <div><span>Suggested items</span><strong id="dashSuggestionCount">0</strong></div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="dashboard-card">
+          <div class="dashboard-card-head"><div><p class="eyebrow">Current quote</p><h2>Quote basket</h2></div><a class="button ghost" href="index.html#cart">Open quote</a></div>
+          <div id="dashboardQuoteItems" class="dashboard-list"></div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card-head"><div><p class="eyebrow">Saved</p><h2>Favorites</h2></div><a class="button ghost" href="index.html#catalog">Add more</a></div>
+          <div id="dashboardFavorites" class="dashboard-list"></div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card-head"><div><p class="eyebrow">History</p><h2>Previous orders</h2></div><button class="button ghost" type="button" id="clearDashboardHistory">Clear demo history</button></div>
+          <div id="dashboardOrders" class="dashboard-list"></div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card-head"><div><p class="eyebrow">Suggested</p><h2>What else may help?</h2></div></div>
+          <div id="dashboardSuggestions" class="dashboard-list"></div>
+        </article>
+      </section>
+    </main>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
