@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MME Equivalent Finder | Other Brand Replacement</title>
+    <meta name="description" content="Find the closest MME equivalent for Agilent, Hitachi, PerkinElmer/Brownlee and other HPLC columns.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark">MME</span><div><strong>Equivalent Finder</strong><span>Other brand replacement tool</span></div></div>
+      <nav aria-label="Primary"><a href="index.html#catalog">Catalog</a><a href="replacement.html">Replacement</a><a href="dashboard.html">Dashboard</a><a href="index.html#cart">Quote</a></nav>
+    </header>
+    <main>
+      <section class="hero replacement-page-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Other brand replacement</p>
+          <h1>Find the closest MME alternative.</h1>
+          <p>Search by brand, product family, part number, phase, particle size, pore size, ID, and length. The result separates exact, close, and different specifications.</p>
+        </div>
+        <div class="equivalent-tools-panel">
+          <h3>Helpful tools</h3>
+          <ul>
+            <li><strong>Part-number search:</strong> paste the competitor SKU when available.</li>
+            <li><strong>Specification builder:</strong> enter phase, particle, pore, ID, and length if the part number is unknown.</li>
+            <li><strong>Exact/close/different table:</strong> review where the equivalent is identical or only similar.</li>
+            <li><strong>Method validation reminder:</strong> closest equivalents are starting points, not automatic validated replacements.</li>
+            <li><strong>Request technical review:</strong> add the suggested MME column to quote and include your method details.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="catalog-section replacement-only-section">
+        <div class="replacement-finder always-open" id="replacement">
+          <div class="replacement-copy">
+            <p class="eyebrow">Search competitor column</p>
+            <h3>Paste what you currently use</h3>
+            <p>Examples: Agilent 693975-902, Poroshell 120 EC-C18 2.7 µm 4.6 x 150, Hitachi 889-0903, Brownlee SPP C18 N9308417.</p>
+          </div>
+          <label class="replacement-box">
+            <span>Other brand column</span>
+            <input id="replacementInput" type="search" placeholder="Agilent Poroshell 120 EC-C18 2.7um 4.6x150">
+          </label>
+          <div class="replacement-builder">
+            <label>Brand / family<input id="builderBrand" type="text" placeholder="Agilent Poroshell"></label>
+            <label>Phase<input id="builderPhase" type="text" placeholder="C18"></label>
+            <label>Particle<input id="builderParticle" type="text" placeholder="2.7um"></label>
+            <label>Pore<input id="builderPore" type="text" placeholder="120A"></label>
+            <label>ID<input id="builderId" type="text" placeholder="4.6"></label>
+            <label>Length<input id="builderLength" type="text" placeholder="150"></label>
+            <button class="button primary" id="buildReplacementQuery" type="button">Build search</button>
+          </div>
+          <div class="replacement-results" id="replacementResults"></div>
+        </div>
+      </section>
+    </main>
+    <script src="verified-competitors.js"></script>
+    <script src="app-final.js"></script>
+    <script src="app-enhance-rules.js"></script>
+    <script src="app-match-quality.js"></script>
+    <script src="replacement-page.js"></script>
+  </body>
+</html>
