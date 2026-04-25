@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MME HPLC Column Finder</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark">MME</span>
+        <div>
+          <strong>MME Column Shop</strong>
+          <span>HPLC selector and equivalents</span>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#catalog">Find</a>
+        <a href="#replacement">Replace</a>
+        <a href="#wizard">Wizard</a>
+        <a href="#cart">Quote</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">2025 HPLC column catalog</p>
+          <h1>Pick a column in seconds.</h1>
+          <p>Search by method, phase, dimension, product code, or another brand column.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#catalog">Find a column</a>
+            <a class="button ghost" href="#replacement">Replace another brand</a>
+          </div>
+        </div>
+        <div class="hero-console">
+          <div class="console-tabs">
+            <a href="#catalog">Search catalog</a>
+            <a href="#replacement">Equivalent finder</a>
+          </div>
+          <div class="hero-search-preview">
+            <span>Try</span>
+            <strong>peptide 300A</strong>
+            <strong>Agilent Poroshell C18 4.6x150</strong>
+            <strong>sugar analysis</strong>
+          </div>
+          <img src="assets/column-visual.svg" alt="">
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Catalog summary">
+        <div><strong id="statProducts">2,099</strong><span>Products</span></div>
+        <div><strong id="statPackings">17</strong><span>Packings</span></div>
+        <div><strong id="statPhases">40+</strong><span>Chemistries</span></div>
+        <div><strong>3 brands</strong><span>Replacement library</span></div>
+      </section>
+
+      <section class="catalog-section" id="catalog">
+        <div class="section-heading">
+          <p class="eyebrow">Smart search</p>
+          <h2>Tell us what you need</h2>
+        </div>
+
+        <div class="search-shell">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="peptide 300A, reverse phase 4.6x150 5um, sugar analysis, UHPLC C18">
+          </label>
+          <button class="button primary" id="clearFilters" type="button">Clear</button>
+        </div>
+        <div class="expert-panel" id="expertPanel" hidden>
+          <div>
+            <p class="eyebrow">Matched intent</p>
+            <strong id="expertSummary"></strong>
+          </div>
+          <div class="expert-tags" id="expertTags"></div>
+        </div>
+
+        <div class="replacement-finder" id="replacement">
+          <div class="replacement-copy">
+            <p class="eyebrow">Other brand replacement</p>
+            <h3>Find the closest MME equivalent</h3>
+            <p>Agilent, Hitachi, and PerkinElmer/Brownlee seed library included.</p>
+          </div>
+          <label class="replacement-box">
+            <span>Other brand column</span>
+            <input id="replacementInput" type="search" placeholder="Agilent Poroshell 120 EC-C18 2.7um 4.6x150">
+          </label>
+          <div class="replacement-results" id="replacementResults"></div>
+        </div>
+
+        <div class="shop-layout">
+          <aside class="filters" aria-label="Catalog filters">
+            <div class="filter-heading">
+              <strong>Refine</strong>
+              <span>Optional filters</span>
+            </div>
+            <div class="filter-block">
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter"></select>
+            </div>
+            <div class="filter-block">
+              <label for="packingFilter">Packing</label>
+              <select id="packingFilter"></select>
+            </div>
+            <div class="filter-block">
+              <label for="phaseFilter">Bonded phase</label>
+              <select id="phaseFilter"></select>
+            </div>
+            <div class="filter-row">
+              <div class="filter-block">
+                <label for="particleFilter">Particle</label>
+                <select id="particleFilter"></select>
+              </div>
+              <div class="filter-block">
+                <label for="poreFilter">Pore</label>
+                <select id="poreFilter"></select>
+              </div>
+            </div>
+            <div class="filter-row">
+              <div class="filter-block">
+                <label for="diameterFilter">ID mm</label>
+                <select id="diameterFilter"></select>
+              </div>
+              <div class="filter-block">
+                <label for="lengthFilter">Length</label>
+                <select id="lengthFilter"></select>
+              </div>
+            </div>
+          </aside>
+
+          <div class="results-area">
+            <div class="results-bar">
+              <strong id="resultCount">Loading catalog...</strong>
+              <div class="result-tools">
+                <div class="view-switch" aria-label="View options">
+                  <button class="view-button active" type="button" data-view="cards">Cards</button>
+                  <button class="view-button" type="button" data-view="table">Table</button>
+                  <button class="view-button" type="button" data-view="compact">Compact</button>
+                </div>
+                <select id="sortSelect" aria-label="Sort products">
+                  <option value="relevance">Best match</option>
+                  <option value="name">Name A-Z</option>
+                  <option value="particle">Particle size</option>
+                  <option value="length">Length</option>
+                </select>
+              </div>
+            </div>
+            <div class="active-filters" id="activeFilters"></div>
+            <div class="product-grid" id="productGrid"></div>
+            <button class="button ghost load-more" id="loadMore" type="button">Load more</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="compare-section" id="compareSection" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Comparison</p>
+          <h2>Compare selected columns</h2>
+        </div>
+        <div id="compareTable"></div>
+      </section>
+
+      <section class="wizard-section" id="wizard">
+        <div class="section-heading">
+          <p class="eyebrow">Guided selector</p>
+          <h2>Start from the sample</h2>
+        </div>
+        <div class="wizard-layout">
+          <aside class="wizard-panel">
+            <div class="step active" data-step="mode">
+              <span>1</span>
+              <div>
+                <strong>Separation mode</strong>
+                <p>Reverse phase, HILIC, ion exchange, SEC, normal phase, or carbohydrate.</p>
+              </div>
+            </div>
+            <div class="step" data-step="format">
+              <span>2</span>
+              <div>
+                <strong>Column format</strong>
+                <p>Analytical, guard, or preparative scale.</p>
+              </div>
+            </div>
+            <div class="step" data-step="performance">
+              <span>3</span>
+              <div>
+                <strong>Performance target</strong>
+                <p>UHPLC speed, robust routine work, biomolecules, or high load prep.</p>
+              </div>
+            </div>
+          </aside>
+
+          <div class="wizard-card">
+            <div class="question-block" data-question="mode">
+              <h3>What are you separating?</h3>
+              <div class="choice-grid" id="modeChoices"></div>
+            </div>
+            <div class="question-block hidden" data-question="format">
+              <h3>What column format does the method need?</h3>
+              <div class="choice-grid" id="formatChoices"></div>
+            </div>
+            <div class="question-block hidden" data-question="performance">
+              <h3>What matters most for this method?</h3>
+              <div class="choice-grid" id="performanceChoices"></div>
+            </div>
+            <div class="wizard-actions">
+              <button class="button ghost" id="backStep" type="button">Back</button>
+              <button class="button primary" id="nextStep" type="button">Next</button>
+              <button class="button ghost" id="resetWizard" type="button">Reset</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="quote-drawer" id="cart">
+        <div>
+          <p class="eyebrow">Quote basket</p>
+          <h2>Selected columns</h2>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <button class="button primary" id="quoteButton" type="button">Request quote</button>
+      </aside>
+    </main>
+
+    <template id="productTemplate">
+      <article class="product-card">
+        <div class="product-top">
+          <span class="category"></span>
+          <div class="quick-actions">
+            <button class="icon-button favorite" type="button" title="Save favorite">♡</button>
+            <button class="icon-button compare" type="button" title="Compare">⇄</button>
+          </div>
+        </div>
+        <h3></h3>
+        <p class="code"></p>
+        <div class="recommendations"></div>
+        <dl class="specs">
+          <div><dt>Phase</dt><dd data-field="phase"></dd></div>
+          <div><dt>Packing</dt><dd data-field="packing"></dd></div>
+          <div><dt>Particle</dt><dd data-field="particle"></dd></div>
+          <div><dt>Pore</dt><dd data-field="pore"></dd></div>
+          <div><dt>ID</dt><dd data-field="diameter"></dd></div>
+          <div><dt>Length</dt><dd data-field="length"></dd></div>
+        </dl>
+        <button class="button product-quote" type="button">Add to quote</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
