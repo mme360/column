@@ -1,0 +1,218 @@
+[
+  {
+    "id": "general-reversed-phase-small-molecules",
+    "label": "General small molecules",
+    "arabic": "جزيئات صغيرة عامة",
+    "match": { "phase": ["C18", "C8", "ODS", "ODS2"] },
+    "searchTerms": ["small molecule", "small molecules", "pharmaceuticals", "drug", "drugs", "api", "assay", "impurities", "routine", "qc", "quality control"],
+    "reason": "Common starting point for routine reversed-phase small-molecule HPLC methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "routine-qc-hplc",
+    "label": "Routine QC",
+    "arabic": "تحليل روتيني للجودة",
+    "match": { "category": ["Analytical column"], "particle": ["5"], "diameter": ["4.6"], "length": ["150", "250"] },
+    "searchTerms": ["routine qc", "qc", "quality control", "robust", "standard hplc", "method transfer", "pharma qc"],
+    "reason": "4.6 mm ID, 150/250 mm length and 5 µm particles are common starting points for robust routine HPLC methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "basic-drugs-amines",
+    "label": "Basic drugs / amines",
+    "arabic": "أدوية قاعدية / أمينات",
+    "match": { "phase": ["C18", "C8", "ODS-B", "BDS C18"], "packingContains": ["BDS", "Supersil", "ODS-B"] },
+    "searchTerms": ["basic drug", "basic drugs", "amine", "amines", "alkaline", "tailing", "basic analyte", "basic analytes"],
+    "reason": "Endcapped or base-deactivated reversed-phase columns are common starting points for basic analytes where peak tailing is a concern.",
+    "confidence": "medium"
+  },
+  {
+    "id": "acidic-compounds",
+    "label": "Acidic compounds",
+    "arabic": "مركبات حمضية",
+    "match": { "phase": ["C18", "C8", "Phenyl", "Phenyl-Hexyl"] },
+    "searchTerms": ["acid", "acidic", "organic acids", "acidic drugs", "acidic analytes"],
+    "reason": "Reversed-phase C18/C8 or phenyl phases are common screening choices for acidic small molecules.",
+    "confidence": "medium"
+  },
+  {
+    "id": "polar-compounds",
+    "label": "Polar compounds",
+    "arabic": "مركبات قطبية",
+    "match": { "phase": ["HILIC", "Amide", "Diol", "NH2", "NH2-S", "CN", "AQ-C18"] },
+    "searchTerms": ["polar", "very polar", "hydrophilic", "water soluble", "polar compounds", "polar analytes"],
+    "reason": "HILIC, amide, amino, cyano, diol and AQ-C18 phases are common starting points for polar compound retention.",
+    "confidence": "medium"
+  },
+  {
+    "id": "aqueous-methods",
+    "label": "100% aqueous methods",
+    "arabic": "طرق مائية بنسبة عالية",
+    "match": { "phase": ["AQ-C18"] },
+    "searchTerms": ["aqueous", "100% aqueous", "high water", "water mobile phase", "polar retention", "aq"],
+    "reason": "AQ-C18 style columns are common starting points when high-aqueous mobile phases are needed.",
+    "confidence": "medium"
+  },
+  {
+    "id": "sugars-carbohydrates",
+    "label": "Sugars / carbohydrates",
+    "arabic": "سكريات / كربوهيدرات",
+    "match": { "phase": ["Sugar", "NH2", "NH2-S", "Amide"], "packingContains": ["Amber"] },
+    "searchTerms": ["sugar", "sugars", "carbohydrate", "carbohydrates", "glucose", "fructose", "sucrose", "lactose", "maltose"],
+    "reason": "Sugar, amino, amide and ligand-exchange style columns are common screening choices for carbohydrate methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "amino-acids",
+    "label": "Amino acids",
+    "arabic": "أحماض أمينية",
+    "match": { "phase": ["NH2", "NH2-S", "HILIC", "Amide", "CN", "C18"] },
+    "searchTerms": ["amino acid", "amino acids", "glycine", "alanine", "lysine", "arginine", "tryptophan"],
+    "reason": "Amino, HILIC/amide and reversed-phase methods are common starting points depending on derivatization and mobile phase.",
+    "confidence": "medium"
+  },
+  {
+    "id": "peptides-wide-pore",
+    "label": "Peptides",
+    "arabic": "ببتيدات",
+    "match": { "phase": ["C18", "C8", "C4", "Amide", "HILIC"], "poreMin": 200 },
+    "searchTerms": ["peptide", "peptides", "insulin", "semaglutide", "oligopeptide", "peptide mapping"],
+    "reason": "Wide-pore reversed-phase or HILIC/amide columns are common starting points for peptide methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "proteins-biomolecules",
+    "label": "Proteins / biomolecules",
+    "arabic": "بروتينات / جزيئات حيوية",
+    "match": { "phase": ["C4", "SEC", "HIC", "Protein A", "C18", "C8"], "poreMin": 300 },
+    "searchTerms": ["protein", "proteins", "biomolecule", "biomolecules", "biologic", "biological", "enzyme", "albumin"],
+    "reason": "Wide-pore reversed-phase, SEC, HIC and Protein A phases are common screening choices for protein and biomolecule workflows.",
+    "confidence": "medium"
+  },
+  {
+    "id": "mabs-antibodies",
+    "label": "mAbs / antibodies",
+    "arabic": "أجسام مضادة / mAbs",
+    "match": { "phase": ["SEC", "HIC", "Protein A", "C4"], "poreMin": 300 },
+    "searchTerms": ["mab", "mabs", "monoclonal antibody", "antibody", "antibodies", "adc", "aggregation", "aggregate"],
+    "reason": "SEC, HIC, Protein A and wide-pore reversed-phase columns are common starting points for antibody characterization workflows.",
+    "confidence": "medium"
+  },
+  {
+    "id": "aromatics-pah",
+    "label": "Aromatics / PAHs",
+    "arabic": "مركبات عطرية / PAHs",
+    "match": { "phase": ["Phenyl", "Phenyl-Hexyl", "Biphenyl", "PFP", "C18"] },
+    "searchTerms": ["aromatic", "aromatics", "pah", "pahs", "benzene", "toluene", "polycyclic", "poly aromatic"],
+    "reason": "Phenyl, biphenyl, PFP and C18 phases are common starting points for aromatic and PAH selectivity screening.",
+    "confidence": "medium"
+  },
+  {
+    "id": "halogenated-isomers",
+    "label": "Halogenated / isomers",
+    "arabic": "مركبات هالوجينية / أيزومرات",
+    "match": { "phase": ["PFP", "Biphenyl", "Phenyl", "Phenyl-Hexyl"] },
+    "searchTerms": ["halogenated", "fluorinated", "chlorinated", "isomer", "isomers", "shape selectivity", "positional isomers"],
+    "reason": "PFP, biphenyl and phenyl phases are common screening choices when aromatic, halogenated or isomer selectivity is needed.",
+    "confidence": "medium"
+  },
+  {
+    "id": "ion-exchange",
+    "label": "Ion exchange",
+    "arabic": "تبادل أيوني",
+    "match": { "phase": ["SAX", "SCX", "WAX", "WCX"] },
+    "searchTerms": ["ion exchange", "anion", "cation", "sax", "scx", "wax", "wcx", "charged analytes", "ionic compounds"],
+    "reason": "SAX, SCX, WAX and WCX phases are common starting points for ion-exchange separation of charged analytes.",
+    "confidence": "medium"
+  },
+  {
+    "id": "size-exclusion",
+    "label": "Size exclusion",
+    "arabic": "فصل حسب الحجم",
+    "match": { "phase": ["SEC", "GPC", "GFC"] },
+    "searchTerms": ["sec", "gpc", "gfc", "size exclusion", "molecular weight", "polymer", "polymers", "aggregate", "aggregation"],
+    "reason": "SEC/GPC/GFC phases are common starting points when separation by hydrodynamic size or molecular weight is needed.",
+    "confidence": "medium"
+  },
+  {
+    "id": "normal-phase",
+    "label": "Normal phase",
+    "arabic": "طور عادي",
+    "match": { "phase": ["SiO2", "Si60", "CN", "NH2", "Diol"] },
+    "searchTerms": ["normal phase", "np hplc", "silica", "non aqueous", "hexane", "chiral screen"],
+    "reason": "Silica, cyano, amino and diol phases are common starting points for normal-phase style methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "lc-ms",
+    "label": "LC-MS",
+    "arabic": "تحليل LC-MS",
+    "match": { "category": ["Analytical column"], "diameter": ["2.1", "3"], "particleMax": 3 },
+    "searchTerms": ["lcms", "lc-ms", "mass spec", "mass spectrometry", "ms compatible", "bioanalysis", "low flow"],
+    "reason": "Narrow-bore columns with smaller particles are common starting points for LC-MS and low-flow methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "fast-uhplc",
+    "label": "Fast UHPLC",
+    "arabic": "تحليل UHPLC سريع",
+    "match": { "particleMax": 3 },
+    "searchTerms": ["fast", "uhplc", "uplc", "high throughput", "high efficiency", "short runtime", "rapid"],
+    "reason": "Small-particle and core-shell columns are common starting points for faster, higher-efficiency separations.",
+    "confidence": "medium"
+  },
+  {
+    "id": "prep-purification",
+    "label": "Prep purification",
+    "arabic": "تنقية تحضيرية",
+    "match": { "categoryContains": ["prep"], "diameterMin": 10 },
+    "searchTerms": ["prep", "preparative", "purification", "scale up", "load", "loading", "fraction collection"],
+    "reason": "Preparative and larger-ID columns are common starting points for purification and loading workflows.",
+    "confidence": "medium"
+  },
+  {
+    "id": "guard-protection",
+    "label": "Guard / protection",
+    "arabic": "حماية العمود",
+    "match": { "categoryContains": ["guard"] },
+    "searchTerms": ["guard", "guard column", "protection", "protect column", "cartridge", "precolumn"],
+    "reason": "Guard columns are used as a protective front-end to help protect the analytical or preparative column inlet.",
+    "confidence": "high"
+  },
+  {
+    "id": "vitamins",
+    "label": "Vitamins",
+    "arabic": "فيتامينات",
+    "match": { "phase": ["C18", "C8", "AQ-C18", "Phenyl"] },
+    "searchTerms": ["vitamin", "vitamins", "fat soluble vitamins", "water soluble vitamins", "retinol", "tocopherol", "ascorbic acid"],
+    "reason": "C18/C8 and AQ-C18/phenyl phases are common screening choices for vitamin methods depending on polarity.",
+    "confidence": "medium"
+  },
+  {
+    "id": "antibiotics",
+    "label": "Antibiotics",
+    "arabic": "مضادات حيوية",
+    "match": { "phase": ["C18", "C8", "AQ-C18", "HILIC", "Amide"] },
+    "searchTerms": ["antibiotic", "antibiotics", "penicillin", "cephalosporin", "tetracycline", "macrolide", "quinolone"],
+    "reason": "Reversed-phase and polar-retention columns are common screening choices for antibiotic methods depending on structure and ionization.",
+    "confidence": "medium"
+  },
+  {
+    "id": "pesticides-environmental",
+    "label": "Pesticides / environmental",
+    "arabic": "مبيدات / تحليل بيئي",
+    "match": { "phase": ["C18", "PFP", "Phenyl", "Biphenyl", "AQ-C18"] },
+    "searchTerms": ["pesticide", "pesticides", "environmental", "water testing", "soil", "residue", "residues", "pollutants"],
+    "reason": "C18, PFP, phenyl/biphenyl and AQ-C18 phases are common screening choices for pesticide and environmental residue methods.",
+    "confidence": "medium"
+  },
+  {
+    "id": "food-testing",
+    "label": "Food testing",
+    "arabic": "تحليل الأغذية",
+    "match": { "phase": ["C18", "C8", "AQ-C18", "NH2", "Sugar", "HILIC", "Amide"] },
+    "searchTerms": ["food", "food testing", "beverage", "nutrients", "additives", "preservatives", "sweeteners"],
+    "reason": "Reversed-phase, polar-retention and sugar/amino phases are common screening choices for food and beverage testing methods.",
+    "confidence": "medium"
+  }
+]
