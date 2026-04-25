@@ -4,7 +4,7 @@
     "label": "General small molecules",
     "arabic": "جزيئات صغيرة عامة",
     "match": { "phase": ["C18", "C8", "ODS", "ODS2"] },
-    "searchTerms": ["small molecule", "small molecules", "pharmaceuticals", "drug", "drugs", "api", "assay", "impurities", "routine", "qc", "quality control"],
+    "searchTerms": ["small molecule", "small molecules", "pharmaceuticals", "drug", "drugs", "api", "assay", "impurities", "routine", "qc", "quality control", "acidic neutral basic compounds"],
     "reason": "Common starting point for routine reversed-phase small-molecule HPLC methods.",
     "confidence": "medium"
   },
@@ -18,201 +18,597 @@
     "confidence": "medium"
   },
   {
-    "id": "basic-drugs-amines",
-    "label": "Basic drugs / amines",
-    "arabic": "أدوية قاعدية / أمينات",
-    "match": { "phase": ["C18", "C8", "ODS-B", "BDS C18"], "packingContains": ["BDS", "Supersil", "ODS-B"] },
-    "searchTerms": ["basic drug", "basic drugs", "amine", "amines", "alkaline", "tailing", "basic analyte", "basic analytes"],
-    "reason": "Endcapped or base-deactivated reversed-phase columns are common starting points for basic analytes where peak tailing is a concern.",
-    "confidence": "medium"
-  },
-  {
-    "id": "acidic-compounds",
-    "label": "Acidic compounds",
-    "arabic": "مركبات حمضية",
-    "match": { "phase": ["C18", "C8", "Phenyl", "Phenyl-Hexyl"] },
-    "searchTerms": ["acid", "acidic", "organic acids", "acidic drugs", "acidic analytes"],
-    "reason": "Reversed-phase C18/C8 or phenyl phases are common screening choices for acidic small molecules.",
-    "confidence": "medium"
-  },
-  {
-    "id": "polar-compounds",
-    "label": "Polar compounds",
-    "arabic": "مركبات قطبية",
-    "match": { "phase": ["HILIC", "Amide", "Diol", "NH2", "NH2-S", "CN", "AQ-C18"] },
-    "searchTerms": ["polar", "very polar", "hydrophilic", "water soluble", "polar compounds", "polar analytes"],
-    "reason": "HILIC, amide, amino, cyano, diol and AQ-C18 phases are common starting points for polar compound retention.",
-    "confidence": "medium"
-  },
-  {
-    "id": "aqueous-methods",
-    "label": "100% aqueous methods",
-    "arabic": "طرق مائية بنسبة عالية",
-    "match": { "phase": ["AQ-C18"] },
-    "searchTerms": ["aqueous", "100% aqueous", "high water", "water mobile phase", "polar retention", "aq"],
-    "reason": "AQ-C18 style columns are common starting points when high-aqueous mobile phases are needed.",
-    "confidence": "medium"
-  },
-  {
-    "id": "sugars-carbohydrates",
-    "label": "Sugars / carbohydrates",
-    "arabic": "سكريات / كربوهيدرات",
-    "match": { "phase": ["Sugar", "NH2", "NH2-S", "Amide"], "packingContains": ["Amber"] },
-    "searchTerms": ["sugar", "sugars", "carbohydrate", "carbohydrates", "glucose", "fructose", "sucrose", "lactose", "maltose"],
-    "reason": "Sugar, amino, amide and ligand-exchange style columns are common screening choices for carbohydrate methods.",
-    "confidence": "medium"
-  },
-  {
-    "id": "amino-acids",
-    "label": "Amino acids",
-    "arabic": "أحماض أمينية",
-    "match": { "phase": ["NH2", "NH2-S", "HILIC", "Amide", "CN", "C18"] },
-    "searchTerms": ["amino acid", "amino acids", "glycine", "alanine", "lysine", "arginine", "tryptophan"],
-    "reason": "Amino, HILIC/amide and reversed-phase methods are common starting points depending on derivatization and mobile phase.",
-    "confidence": "medium"
-  },
-  {
-    "id": "peptides-wide-pore",
-    "label": "Peptides",
-    "arabic": "ببتيدات",
-    "match": { "phase": ["C18", "C8", "C4", "Amide", "HILIC"], "poreMin": 200 },
-    "searchTerms": ["peptide", "peptides", "insulin", "semaglutide", "oligopeptide", "peptide mapping"],
-    "reason": "Wide-pore reversed-phase or HILIC/amide columns are common starting points for peptide methods.",
-    "confidence": "medium"
-  },
-  {
-    "id": "proteins-biomolecules",
-    "label": "Proteins / biomolecules",
-    "arabic": "بروتينات / جزيئات حيوية",
-    "match": { "phase": ["C4", "SEC", "HIC", "Protein A", "C18", "C8"], "poreMin": 300 },
-    "searchTerms": ["protein", "proteins", "biomolecule", "biomolecules", "biologic", "biological", "enzyme", "albumin"],
-    "reason": "Wide-pore reversed-phase, SEC, HIC and Protein A phases are common screening choices for protein and biomolecule workflows.",
-    "confidence": "medium"
-  },
-  {
-    "id": "mabs-antibodies",
-    "label": "mAbs / antibodies",
-    "arabic": "أجسام مضادة / mAbs",
-    "match": { "phase": ["SEC", "HIC", "Protein A", "C4"], "poreMin": 300 },
-    "searchTerms": ["mab", "mabs", "monoclonal antibody", "antibody", "antibodies", "adc", "aggregation", "aggregate"],
-    "reason": "SEC, HIC, Protein A and wide-pore reversed-phase columns are common starting points for antibody characterization workflows.",
-    "confidence": "medium"
-  },
-  {
-    "id": "aromatics-pah",
-    "label": "Aromatics / PAHs",
-    "arabic": "مركبات عطرية / PAHs",
-    "match": { "phase": ["Phenyl", "Phenyl-Hexyl", "Biphenyl", "PFP", "C18"] },
-    "searchTerms": ["aromatic", "aromatics", "pah", "pahs", "benzene", "toluene", "polycyclic", "poly aromatic"],
-    "reason": "Phenyl, biphenyl, PFP and C18 phases are common starting points for aromatic and PAH selectivity screening.",
-    "confidence": "medium"
-  },
-  {
-    "id": "halogenated-isomers",
-    "label": "Halogenated / isomers",
-    "arabic": "مركبات هالوجينية / أيزومرات",
-    "match": { "phase": ["PFP", "Biphenyl", "Phenyl", "Phenyl-Hexyl"] },
-    "searchTerms": ["halogenated", "fluorinated", "chlorinated", "isomer", "isomers", "shape selectivity", "positional isomers"],
-    "reason": "PFP, biphenyl and phenyl phases are common screening choices when aromatic, halogenated or isomer selectivity is needed.",
-    "confidence": "medium"
-  },
-  {
-    "id": "ion-exchange",
-    "label": "Ion exchange",
-    "arabic": "تبادل أيوني",
-    "match": { "phase": ["SAX", "SCX", "WAX", "WCX"] },
-    "searchTerms": ["ion exchange", "anion", "cation", "sax", "scx", "wax", "wcx", "charged analytes", "ionic compounds"],
-    "reason": "SAX, SCX, WAX and WCX phases are common starting points for ion-exchange separation of charged analytes.",
-    "confidence": "medium"
-  },
-  {
-    "id": "size-exclusion",
-    "label": "Size exclusion",
-    "arabic": "فصل حسب الحجم",
-    "match": { "phase": ["SEC", "GPC", "GFC"] },
-    "searchTerms": ["sec", "gpc", "gfc", "size exclusion", "molecular weight", "polymer", "polymers", "aggregate", "aggregation"],
-    "reason": "SEC/GPC/GFC phases are common starting points when separation by hydrodynamic size or molecular weight is needed.",
-    "confidence": "medium"
-  },
-  {
-    "id": "normal-phase",
-    "label": "Normal phase",
-    "arabic": "طور عادي",
-    "match": { "phase": ["SiO2", "Si60", "CN", "NH2", "Diol"] },
-    "searchTerms": ["normal phase", "np hplc", "silica", "non aqueous", "hexane", "chiral screen"],
-    "reason": "Silica, cyano, amino and diol phases are common starting points for normal-phase style methods.",
-    "confidence": "medium"
-  },
-  {
-    "id": "lc-ms",
-    "label": "LC-MS",
-    "arabic": "تحليل LC-MS",
-    "match": { "category": ["Analytical column"], "diameter": ["2.1", "3"], "particleMax": 3 },
-    "searchTerms": ["lcms", "lc-ms", "mass spec", "mass spectrometry", "ms compatible", "bioanalysis", "low flow"],
-    "reason": "Narrow-bore columns with smaller particles are common starting points for LC-MS and low-flow methods.",
-    "confidence": "medium"
-  },
-  {
-    "id": "fast-uhplc",
-    "label": "Fast UHPLC",
-    "arabic": "تحليل UHPLC سريع",
-    "match": { "particleMax": 3 },
-    "searchTerms": ["fast", "uhplc", "uplc", "high throughput", "high efficiency", "short runtime", "rapid"],
-    "reason": "Small-particle and core-shell columns are common starting points for faster, higher-efficiency separations.",
-    "confidence": "medium"
-  },
-  {
-    "id": "prep-purification",
-    "label": "Prep purification",
-    "arabic": "تنقية تحضيرية",
-    "match": { "categoryContains": ["prep"], "diameterMin": 10 },
-    "searchTerms": ["prep", "preparative", "purification", "scale up", "load", "loading", "fraction collection"],
-    "reason": "Preparative and larger-ID columns are common starting points for purification and loading workflows.",
-    "confidence": "medium"
-  },
-  {
-    "id": "guard-protection",
-    "label": "Guard / protection",
-    "arabic": "حماية العمود",
-    "match": { "categoryContains": ["guard"] },
-    "searchTerms": ["guard", "guard column", "protection", "protect column", "cartridge", "precolumn"],
-    "reason": "Guard columns are used as a protective front-end to help protect the analytical or preparative column inlet.",
+    "id": "supersil-ods2-general-purpose",
+    "label": "Robust general purpose",
+    "arabic": "اختيار عام قوي",
+    "match": { "packing": ["Supersil"], "nameContains": ["ODS2"] },
+    "searchTerms": ["general purpose", "acidic compounds", "alkaline compounds", "neutral compounds", "medicine analysis", "traditional Chinese medicine", "vitamin A", "capsaicin", "fipronil", "sucralose", "semaglutide", "liraglutide", "peptides", "alkaloids", "phthalates", "minoxidil", "cosmetic preservative", "coenzyme Q10", "dexamethasone", "nifedipine", "fluconazole", "pantoprazole", "lovastatin", "naproxen"],
+    "reason": "PDF guide describes Supersil ODS2 as a robust general-purpose C18 option with good performance for acidic, alkaline and neutral compounds and broad pharmaceutical, food, biological product and environmental examples.",
     "confidence": "high"
   },
   {
-    "id": "vitamins",
-    "label": "Vitamins",
-    "arabic": "فيتامينات",
-    "match": { "phase": ["C18", "C8", "AQ-C18", "Phenyl"] },
-    "searchTerms": ["vitamin", "vitamins", "fat soluble vitamins", "water soluble vitamins", "retinol", "tocopherol", "ascorbic acid"],
-    "reason": "C18/C8 and AQ-C18/phenyl phases are common screening choices for vitamin methods depending on polarity.",
-    "confidence": "medium"
+    "id": "supersil-ods-b-basic-analytes",
+    "label": "Basic analytes",
+    "arabic": "مركبات قاعدية",
+    "match": { "packing": ["Supersil"], "nameContains": ["ODS-B"] },
+    "searchTerms": ["basic analytes", "alkaline compounds", "base deactivated", "low silanol", "letrozole", "hydroxychloroquine", "irbesartan", "gentamicin", "teriparatide", "octreotide", "resveratrol", "pigments"],
+    "reason": "PDF guide describes Supersil ODS-B as base-deactivated C18 intended to reduce silanol activity and support alkaline/basic compounds.",
+    "confidence": "high"
   },
   {
-    "id": "antibiotics",
-    "label": "Antibiotics",
-    "arabic": "مضادات حيوية",
-    "match": { "phase": ["C18", "C8", "AQ-C18", "HILIC", "Amide"] },
-    "searchTerms": ["antibiotic", "antibiotics", "penicillin", "cephalosporin", "tetracycline", "macrolide", "quinolone"],
-    "reason": "Reversed-phase and polar-retention columns are common screening choices for antibiotic methods depending on structure and ionization.",
-    "confidence": "medium"
+    "id": "supersil-aq-c18-aqueous-polar",
+    "label": "100% aqueous / polar",
+    "arabic": "طور مائي / مركبات قطبية",
+    "match": { "packing": ["Supersil"], "phase": ["AQ-C18"] },
+    "searchTerms": ["100% aqueous", "aqueous", "high water", "polar analytes", "potassium clavulanate", "minodronic acid", "moxalactam", "creatine phosphate", "cytidylic acid", "cyclodextrin", "domperidone", "cefalexin", "nucleotides"],
+    "reason": "PDF guide states Supersil AQ-C18 is polar-modified for use in 100% aqueous mobile phases and enhanced retention/resolution of polar analytes.",
+    "confidence": "high"
   },
   {
-    "id": "pesticides-environmental",
-    "label": "Pesticides / environmental",
-    "arabic": "مبيدات / تحليل بيئي",
-    "match": { "phase": ["C18", "PFP", "Phenyl", "Biphenyl", "AQ-C18"] },
-    "searchTerms": ["pesticide", "pesticides", "environmental", "water testing", "soil", "residue", "residues", "pollutants"],
-    "reason": "C18, PFP, phenyl/biphenyl and AQ-C18 phases are common screening choices for pesticide and environmental residue methods.",
-    "confidence": "medium"
+    "id": "supersil-c8-moderately-polar",
+    "label": "Moderately polar analytes",
+    "arabic": "مركبات متوسطة القطبية",
+    "match": { "packing": ["Supersil"], "phase": ["C8"] },
+    "searchTerms": ["c8", "moderately polar", "lower hydrophobic retention", "mesalazine", "cilostazol", "progesterone", "pemetrexed", "synthetic capsaicin", "brodifacoum"],
+    "reason": "PDF guide describes Supersil C8 as lower hydrophobic retention than C18 and suitable for moderately polar analytes.",
+    "confidence": "high"
   },
   {
-    "id": "food-testing",
-    "label": "Food testing",
-    "arabic": "تحليل الأغذية",
-    "match": { "phase": ["C18", "C8", "AQ-C18", "NH2", "Sugar", "HILIC", "Amide"] },
-    "searchTerms": ["food", "food testing", "beverage", "nutrients", "additives", "preservatives", "sweeteners"],
-    "reason": "Reversed-phase, polar-retention and sugar/amino phases are common screening choices for food and beverage testing methods.",
+    "id": "supersil-c4-bioproducts",
+    "label": "Bioproducts / insulin",
+    "arabic": "منتجات حيوية / إنسولين",
+    "match": { "packing": ["Supersil"], "phase": ["C4"] },
+    "searchTerms": ["bioproducts", "biological products", "proteins", "peptides", "insulin", "growth factor", "molecular weight 10000 100000", "wide pore", "300A"],
+    "reason": "PDF guide describes Supersil C4 as based on 300 Å pore size and designed for separation of bioproducts, generally MW 10,000-100,000, with insulin/growth factor example.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-phenyl-aromatics",
+    "label": "Aromatics / pi-pi selectivity",
+    "arabic": "مركبات عطرية / انتقائية باي-باي",
+    "match": { "packing": ["Supersil"], "phase": ["Phenyl"] },
+    "searchTerms": ["aromatic", "aromatics", "pi-pi", "stereoselectivity", "etoposide", "dutasteride", "phenyl projects"],
+    "reason": "PDF guide describes Supersil Phenyl as providing enhanced pi-pi interaction with aromatics and high stereoselectivity.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-nh2-sugars-polar",
+    "label": "Sugars / amino phase",
+    "arabic": "سكريات / طور أميني",
+    "match": { "packing": ["Supersil"], "phase": ["NH2", "NH2-S"] },
+    "searchTerms": ["monosaccharide", "sugars", "fructose", "glucose", "lactose", "sucrose", "maltose", "xylose", "mannitol", "oligosaccharides", "phospholipids", "amino acid", "betaine", "glucosamine", "ornithine", "L-carnitine"],
+    "reason": "PDF guide describes Supersil NH2/NH2-S as aminopropyl columns compatible with reversed phase, normal phase and weak anion exchange, suitable for strong polar analytes and carbohydrates.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-scx-cation-exchange",
+    "label": "Strong cation exchange",
+    "arabic": "تبادل كاتيوني قوي",
+    "match": { "packing": ["Supersil"], "phase": ["SCX", "SCX-2"] },
+    "searchTerms": ["cation exchange", "strong cation", "alkali compounds", "cationic compounds", "creatine", "creatinine", "dicyandiamide", "glyphosate", "aminomethyl phosphoric acid", "benzalkonium chloride", "arecoline", "sodium chloride"],
+    "reason": "PDF guide describes Supersil SCX/SCX-2 as strong cation-exchange columns for alkali/cationic compounds, with 300 Å option for biological detection.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-sax-anion-exchange",
+    "label": "Strong anion exchange",
+    "arabic": "تبادل أنيوني قوي",
+    "match": { "packing": ["Supersil"], "phase": ["SAX"] },
+    "searchTerms": ["anion exchange", "strong anion", "acidic compounds", "anionic compounds", "glycolic acid", "glyoxylic acid", "iminodiacetic acid", "glyphosate"],
+    "reason": "PDF guide describes Supersil SAX as a strong anion-exchanger for acidic and anionic compounds.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-diol-hilic",
+    "label": "HILIC polar selectivity",
+    "arabic": "انتقائية HILIC للمركبات القطبية",
+    "match": { "packing": ["Supersil"], "phase": ["Diol"] },
+    "searchTerms": ["diol", "hilic", "polar analytes", "phospholipid", "ammonium chloride", "alternative to C18", "without ion pair", "without derivatization"],
+    "reason": "PDF guide describes Supersil Diol as a general HILIC mode column providing alternative selectivity to C18 for polar analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-cn-complementary-selectivity",
+    "label": "CN complementary selectivity",
+    "arabic": "انتقائية CN مكملة",
+    "match": { "packing": ["Supersil"], "phase": ["CN"] },
+    "searchTerms": ["cyano", "cn", "normal phase", "reversed phase", "carboxyl", "carbonyl", "amine", "granisetron", "cetylpyridinium", "levothyroxine", "hydralazine", "ondansetron", "remifentanil", "ephedrine"],
+    "reason": "PDF guide describes Supersil CN as compatible with reversed and normal phase, offering complementary selectivity to C18, especially for hydrophobic analytes and carbonyl/amine compounds.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-sio2-normal-phase",
+    "label": "Normal phase / fat-soluble",
+    "arabic": "طور عادي / مركبات ذائبة في الدهون",
+    "match": { "packing": ["Supersil"], "phase": ["SiO2", "Si60"] },
+    "searchTerms": ["normal phase", "silica", "strong polar", "fat soluble", "xanthophyll", "zeaxanthin", "vitamin D3", "vitamin D2", "vitamin A", "coenzyme Q10", "deltamethrin", "cypermethrin"],
+    "reason": "PDF guide describes Supersil SiO2 as a general normal-phase silica suitable for strong polar and liposoluble analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-hilic-polar-hydrophilic",
+    "label": "HILIC hydrophilic analytes",
+    "arabic": "HILIC للمركبات المحبة للماء",
+    "match": { "packing": ["Supersil"], "phase": ["HILIC"] },
+    "searchTerms": ["hilic", "hydrophilic", "polar", "YiMuCaoKeLi", "nitroaniline", "aqueous phase 3-30"],
+    "reason": "PDF guide describes Supersil HILIC as providing enhanced retention of polar and hydrophilic analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-amide-oligosaccharides",
+    "label": "Oligosaccharides / amide HILIC",
+    "arabic": "أوليجوسكريات / HILIC أميد",
+    "match": { "packing": ["Supersil"], "phase": ["Amide"] },
+    "searchTerms": ["amide", "oligosaccharides", "neutral oligosaccharides", "acidic oligosaccharides", "basic oligosaccharides", "fruit oligosaccharides", "alginate", "chitosan", "galactooligosaccharides", "nicotinamide mononucleotide", "NMN"],
+    "reason": "PDF guide describes Supersil Amide as HILIC mode with selectivity for neutral, acidic and basic oligosaccharides and improved stability versus NH2.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-polar-phenyl-strong-polar-basic",
+    "label": "Polar/basic aromatics",
+    "arabic": "مركبات عطرية قطبية/قاعدية",
+    "match": { "packing": ["Supersil"], "phase": ["Polar-Phenyl"] },
+    "searchTerms": ["polar phenyl", "strong polar", "strong basic", "ephedrine", "pseudoephedrine", "trimellitic acid", "phthalic acid", "food simulants"],
+    "reason": "PDF guide describes Supersil Polar-Phenyl as ether-linked phenyl with embedded polar groups for added retention of strong polar or strong basic analytes and improved peak shapes.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-pfp-halogenated-isomers",
+    "label": "PFP / halogenated isomers",
+    "arabic": "PFP / أيزومرات هالوجينية",
+    "match": { "packing": ["Supersil"], "phase": ["PFP"] },
+    "searchTerms": ["pfp", "pentafluorophenyl", "aromatic", "rigid ring", "pi-pi", "halogenated", "positional isomers", "vitamin E", "dairy products"],
+    "reason": "PDF guide describes Supersil PFP as complementary to C18 with multiple retention mechanisms, suitable for aromatics, rigid ring systems and halogenated positional isomers.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-hilic-arg-amino-acids-peptides-vitamins",
+    "label": "Amino acids / peptides / vitamins",
+    "arabic": "أحماض أمينية / ببتيدات / فيتامينات",
+    "match": { "packing": ["Supersil"], "phase": ["HILIC-ARG"] },
+    "searchTerms": ["arginine", "amino acids", "leucine", "valine", "alanine", "glycine", "oligopeptide", "polypeptide", "Gly-Phe", "vitamins", "nucleic acids", "catecholamines", "sugar alcohols"],
+    "reason": "PDF guide describes Supersil HILIC-ARG as providing selectivity for hydrophilic analytes such as amino acids, peptides, vitamins and nucleic acids.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-c30-fat-soluble-isomers",
+    "label": "Fat-soluble isomers / carotenoids",
+    "arabic": "أيزومرات ذائبة في الدهون / كاروتينات",
+    "match": { "packing": ["Supersil"], "phase": ["C30"] },
+    "searchTerms": ["c30", "shape selectivity", "hydrophobic isomers", "carotene", "astaxanthin", "lutein ester", "vitamin E", "vitamin K1", "fat soluble compounds"],
+    "reason": "PDF guide describes Supersil C30 as designed for high shape selectivity of hydrophobic structurally related isomers including carotene and fat-soluble vitamins.",
+    "confidence": "high"
+  },
+  {
+    "id": "ecoreshell-c18-fast-hplc-uhplc",
+    "label": "Fast HPLC/UHPLC C18",
+    "arabic": "C18 سريع لـ HPLC/UHPLC",
+    "match": { "packing": ["ECoreshell", "Ecoreshell"], "phase": ["C18"] },
+    "searchTerms": ["core shell", "coreshell", "fast", "uhplc", "hplc", "low backpressure", "high resolution", "2.7", "2.0"],
+    "reason": "PDF guide describes ECoreshell C18 as core-shell C18 for high resolution/performance with low backpressure in HPLC/UHPLC systems.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-beh-t-c18-wide-ph-development",
+    "label": "Wide pH method development",
+    "arabic": "تطوير طرق بمدى pH واسع",
+    "match": { "packing": ["SinoPak BEH"], "nameContains": ["T-C18"] },
+    "searchTerms": ["wide ph", "method development", "unknown multi-component", "nucleotides", "amino acids", "melittin", "agricultural residues", "veterinary residues", "methamidophos", "DDT", "aldicarb", "macrolide antibiotics", "sulfonamides", "quinolones", "tetracycline", "theophylline", "telmisartan", "zidovudine", "adenosine"],
+    "reason": "PDF guide describes SinoPak BEH T-C18 as a stable hybrid C18 for broad pH/temperature range and method development of unknown multi-component analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-beh-aq-c18-high-aqueous",
+    "label": "BEH AQ-C18 / aqueous",
+    "arabic": "BEH AQ-C18 / مائي",
+    "match": { "packing": ["SinoPak BEH"], "phase": ["AQ-C18"] },
+    "searchTerms": ["aqueous", "100% aqueous", "polar", "benzoic acid", "sorbic acid", "caffeine", "theobromine", "theophylline", "xanthine", "hypoxanthine", "food additives", "glucoraphanin", "isoproterenol", "amoxicillin", "loratadine", "omeprazole"],
+    "reason": "PDF guide describes SinoPak BEH AQ-C18 as embedded amide C18 compatible with 100% aqueous mobile phase and broad pH stability.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-beh-c8-fast-elution-isomers",
+    "label": "C8 quicker elution / isomers",
+    "arabic": "C8 لخروج أسرع / أيزومرات",
+    "match": { "packing": ["SinoPak BEH"], "phase": ["C8"] },
+    "searchTerms": ["quicker elution", "low polar analytes", "isomers", "analogues", "stereoselectivity", "sodium nitroprusside"],
+    "reason": "PDF guide describes SinoPak BEH T-C8 as less hydrophobic than C18, allowing quicker elution and higher stereoselectivity for isomers and analogues.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-beh-phenyl-aromatics",
+    "label": "BEH phenyl aromatics",
+    "arabic": "BEH فينيل للمركبات العطرية",
+    "match": { "packing": ["SinoPak BEH"], "phase": ["Phenyl", "Phenyl-Hexyl"] },
+    "searchTerms": ["aromatic hydrocarbons", "ketones", "aldehydes", "acids", "esters", "alcohols", "drug analysis", "food testing", "environmental analysis", "methylparaben"],
+    "reason": "PDF guide describes SinoPak BEH Phenyl/Phenyl-Hexyl as chemically stable phenyl phases with unique selectivity for aromatics and related compounds.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-c18-high-carbon-complex-samples",
+    "label": "High-carbon C18 / complex samples",
+    "arabic": "C18 عالي التحميل الكربوني / عينات معقدة",
+    "match": { "packing": ["SinoPak"], "phase": ["C18"], "nameContains": ["C18"] },
+    "searchTerms": ["complex samples", "traditional Chinese medicine", "organic compounds", "food pigments", "sunset yellow", "carmine", "vitamin K3", "vitamin D3", "vitamin E", "acesulfame", "benzoic acid", "sugar substitute", "PAEs", "plasticizer", "thiabendazole", "o-phenylphenol", "imazalil", "biphenyl"],
+    "reason": "PDF guide describes SinoPak C18 as high-carbon-load silica C18 for complex organic samples such as TCM, food additives, pigments and plasticizers.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-aq-c18-medical-devices-peptides",
+    "label": "AQ-C18 / medical drugs / peptides",
+    "arabic": "AQ-C18 / أدوية و ببتيدات",
+    "match": { "packing": ["SinoPak"], "phase": ["AQ-C18"] },
+    "searchTerms": ["aqueous", "medical device chemical drugs", "levamisole", "phentolamine", "berberine", "chlorpromazine", "peptide purification", "peptide preparation"],
+    "reason": "PDF guide describes SinoPak AQ-C18 as fully porous triple-bonded C18 compatible with 100% aqueous mobile phases, with examples in medical device drugs and peptide purification/preparation.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-c8-moderately-polar",
+    "label": "C8 moderately polar",
+    "arabic": "C8 لمركبات متوسطة القطبية",
+    "match": { "packing": ["SinoPak"], "phase": ["C8"] },
+    "searchTerms": ["moderately polar", "ziprasidone", "cefuroxime", "cefuroxime lactone", "rifampicin"],
+    "reason": "PDF guide describes SinoPak C8 as a dense bonded C8 for moderately polar analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-phenyl-aromatics",
+    "label": "Phenyl aromatic selectivity",
+    "arabic": "انتقائية فينيل للمركبات العطرية",
+    "match": { "packing": ["SinoPak"], "phase": ["Phenyl", "Phenyl-Hexyl"] },
+    "searchTerms": ["aromatic analytes", "aromatic hydrocarbons", "ketones", "aldehydes", "acids", "esters", "alcohols", "fructus xanthii", "atractyloside"],
+    "reason": "PDF guide describes SinoPak Phenyl/Phenyl-Hexyl as phenyl phases with stereoselectivity for aromatic analytes and broad drug/food/environment applications.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-bds-c18-basic-polar",
+    "label": "BDS C18 for basic/polar analytes",
+    "arabic": "BDS C18 للمركبات القاعدية/القطبية",
+    "match": { "packing": ["Hypersil BDS"], "phase": ["C18"] },
+    "searchTerms": ["base deactivated", "alkali compounds", "polar analytes", "domperidone", "haloperidol", "uracil", "uridine", "adenine", "guanosine", "adenosine", "azithromycin", "honey", "hydroxymethylfurfural", "vitamin D3", "propyl gallate"],
+    "reason": "PDF guide describes Hypersil BDS C18 as base-deactivated silica suitable for alkali compounds and widely used for polar analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-bds-c8-polar",
+    "label": "BDS C8 polar analytes",
+    "arabic": "BDS C8 للمركبات القطبية",
+    "match": { "packing": ["Hypersil BDS"], "phase": ["C8"] },
+    "searchTerms": ["base deactivated", "moderately polar", "strong polar", "sodium picosulfate"],
+    "reason": "PDF guide describes Hypersil BDS C8 as base-deactivated C8 suitable for moderately or strongly polar analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-bds-cn-polar-normal-phase",
+    "label": "BDS CN polar / normal phase",
+    "arabic": "BDS CN للقطبية / الطور العادي",
+    "match": { "packing": ["Hypersil BDS"], "phase": ["CN"] },
+    "searchTerms": ["cyano", "moderately polar", "strong polar", "normal phase", "non-polar compounds", "irbesartan"],
+    "reason": "PDF guide describes Hypersil BDS CN as base-deactivated cyano suitable for moderately/strongly polar analytes and non-polar compounds in normal phase.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-bds-phenyl-aromatics",
+    "label": "BDS phenyl aromatics",
+    "arabic": "BDS فينيل للمركبات العطرية",
+    "match": { "packing": ["Hypersil BDS"], "phase": ["C6H5", "Phenyl"] },
+    "searchTerms": ["aromatic analytes", "clevidipine", "etoposide", "normal phase"],
+    "reason": "PDF guide describes Hypersil BDS C6H5 as base-deactivated phenyl suitable for aromatic analytes and non-polar normal-phase work.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-ods2-classical-c18",
+    "label": "Classical ODS2 methods",
+    "arabic": "طرق ODS2 كلاسيكية",
+    "match": { "packing": ["Hypersil"], "nameContains": ["ODS2"] },
+    "searchTerms": ["classical", "global standard", "existing methods", "paracetamol", "acetaminophen", "caffeine", "aspirin", "salicylic acid", "domperidone", "ivermectin", "gallogen"],
+    "reason": "PDF guide describes Hypersil ODS2 as a classical global-standard C18 with excellent stability/reproducibility for many existing methods.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-ods-general-c18",
+    "label": "Classical ODS methods",
+    "arabic": "طرق ODS كلاسيكية",
+    "match": { "packing": ["Hypersil"], "nameContains": ["ODS ", "ODS 5", "ODS 10"] },
+    "searchTerms": ["classical", "general purpose", "atropine sulphate", "extractum belladonnae", "quick elution", "weak polar analytes"],
+    "reason": "PDF guide describes Hypersil ODS as a classical C18 with low carbon load and quick elution for weak polar analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-c8-moderately-polar",
+    "label": "Classical C8 moderately polar",
+    "arabic": "C8 كلاسيكي لمركبات متوسطة القطبية",
+    "match": { "packing": ["Hypersil"], "phase": ["C8"] },
+    "searchTerms": ["moderately polar", "stronger polar", "acidic basic neutral", "preparative", "10um"],
+    "reason": "PDF guide describes Hypersil C8 as suitable for moderately or stronger polar analytes with good peak shapes for acidic, basic and neutral compounds.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-c1-water-soluble-vitamins",
+    "label": "Water-soluble vitamins",
+    "arabic": "فيتامينات ذائبة في الماء",
+    "match": { "packing": ["Hypersil"], "phase": ["C1"] },
+    "searchTerms": ["water-soluble vitamins", "moderately polar", "multiple functional groups"],
+    "reason": "PDF guide describes Hypersil C1 as suitable for moderately polar analytes or compounds with multiple functional groups, with water-soluble vitamin application.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-phenyl-aromatics",
+    "label": "Classical phenyl aromatics",
+    "arabic": "فينيل كلاسيكي للعطريات",
+    "match": { "packing": ["Hypersil"], "phase": ["C6H5", "Phenyl"] },
+    "searchTerms": ["phenyl", "aromatic", "stereoselectivity", "piperacillin", "tazobactam", "phenylacetonitrile"],
+    "reason": "PDF guide describes Hypersil C6H5 as a classical phenyl phase with stereoselectivity for aromatic analytes.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-sio2-normal-phase-vitamins-pesticides",
+    "label": "Silica normal phase vitamins/pesticides",
+    "arabic": "سيليكا طور عادي للفيتامينات/المبيدات",
+    "match": { "packing": ["Hypersil"], "phase": ["SiO2", "Si60"] },
+    "searchTerms": ["normal phase", "strong polar", "fat soluble", "coenzyme Q10", "vitamin D3", "vitamin A", "cypermethrin", "clethodim", "pesticides"],
+    "reason": "PDF guide describes Hypersil SiO2 as normal phase silica suitable for strong polar and fat-soluble analytes, including vitamins and pesticides.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-cn-double-triple-bonds",
+    "label": "CN double/triple-bond selectivity",
+    "arabic": "CN لمركبات بها روابط مزدوجة/ثلاثية",
+    "match": { "packing": ["Hypersil"], "phase": ["CN"] },
+    "searchTerms": ["cyano", "normal phase", "reversed phase", "double bonds", "triple bonds", "compound sodium cholate", "aminophylline"],
+    "reason": "PDF guide describes Hypersil CN as compatible with normal and reversed phases and suitable for compounds containing double or triple bonds.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-nh2-carbohydrates",
+    "label": "Classical NH2 carbohydrates",
+    "arabic": "NH2 كلاسيكي للسكريات",
+    "match": { "packing": ["Hypersil"], "phase": ["NH2", "NH2-S"] },
+    "searchTerms": ["carbohydrates", "fructose", "glucose", "sucrose", "maltose", "maltotriose", "maltopentaose", "maltoheptaose", "weak anion exchange"],
+    "reason": "PDF guide describes Hypersil NH2/NH2-S as compatible in normal/reversed phases and weak anion exchange, with carbohydrate examples.",
+    "confidence": "high"
+  },
+  {
+    "id": "hypersil-sax-pesticides",
+    "label": "SAX pesticides / glyphosate",
+    "arabic": "SAX للمبيدات / جليفوسات",
+    "match": { "packing": ["Hypersil"], "phase": ["SAX"] },
+    "searchTerms": ["sax", "anion exchange", "glufosinate", "glyphosate", "pesticides", "amines", "quaternary ammonium"],
+    "reason": "PDF guide describes Hypersil SAX as a quaternary amine phase used for active groups and pesticide examples including glufosinate/glyphosate.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinochrom-ods-ap-proteins-peptides",
+    "label": "Protein/peptide reversed phase",
+    "arabic": "طور عكسي للبروتينات/الببتيدات",
+    "match": { "packing": ["SinoChrom"], "nameContains": ["ODS-AP"] },
+    "searchTerms": ["protein analysis", "peptides", "proteins", "biological products", "300A", "salmon calcitonin", "insulin", "molecular weight 10000 100000", "analytical and preparative"],
+    "reason": "PDF guide describes SinoChrom ODS-AP as 300 Å C18 suitable for biological products such as peptides and proteins, including salmon calcitonin and insulin.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinochrom-ods-bp-hydrophilic-aqueous",
+    "label": "Hydrophilic samples / high aqueous",
+    "arabic": "عينات محبة للماء / محتوى مائي عالي",
+    "match": { "packing": ["SinoChrom"], "nameContains": ["ODS-BP"] },
+    "searchTerms": ["hydrophilic samples", "95% aqueous", "no ion pair", "econazole nitrate", "chloronicotinic acid", "methacrylate", "phloroglucinol", "alkylphenols", "tartaric acid", "malic acid", "citric acid", "succinic acid", "lactic acid", "vitamin K3", "caffeine"],
+    "reason": "PDF guide describes SinoChrom ODS-BP as stable in high-aqueous mobile phases and suitable for hydrophilic samples, TCM, chemical/pharmaceutical intermediates and foods.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinochrom-c8-bioproducts-hydrophobic",
+    "label": "C8 hydrophobic / bioproducts",
+    "arabic": "C8 للعينات الكارهة للماء / حيوية",
+    "match": { "packing": ["SinoChrom"], "phase": ["C8"] },
+    "searchTerms": ["hydrophobic samples", "biological products", "peptides", "proteins", "300A", "albuterol", "vincristine sulfate", "acetaminophen", "dimer acid"],
+    "reason": "PDF guide describes SinoChrom C8 as recommended for high hydrophobic samples, with 300 Å option for biological products such as peptides and proteins.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinochrom-c4-bioproducts",
+    "label": "C4 biological products",
+    "arabic": "C4 للمنتجات الحيوية",
+    "match": { "packing": ["SinoChrom"], "phase": ["C4"] },
+    "searchTerms": ["biological products", "peptides", "proteins", "300A", "quick elution", "hydrophobic samples"],
+    "reason": "PDF guide describes SinoChrom C4 as recommended for biological products with 300 Å pore size for peptides and proteins.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinochrom-sio2-pesticides-vitamins",
+    "label": "SinoChrom silica pesticides/vitamins",
+    "arabic": "سيليكا SinoChrom للمبيدات/الفيتامينات",
+    "match": { "packing": ["SinoChrom"], "phase": ["SiO2", "Si60"] },
+    "searchTerms": ["silica", "pesticides", "difenoconazole", "peptides", "lactoferrin", "phospholipid", "lecithin", "phosphatidylcholine", "vitamin E isomers"],
+    "reason": "PDF guide describes SinoChrom SiO2/Si60 as rugged unbonded silica options with examples in pesticides, peptides/lactoferrin and vitamin E isomers.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-coreshell-general-fast",
+    "label": "Fast core-shell general",
+    "arabic": "كور-شيل سريع للاستخدام العام",
+    "match": { "packing": ["Supersil Coreshell"], "phase": ["C18", "C18 Plus"] },
+    "searchTerms": ["core-shell", "coreshell", "fast", "uhplc", "hplc", "low backpressure", "acids", "bases", "neutrals", "broad pH", "high resolution"],
+    "reason": "PDF guide describes Supersil Coreshell C18/C18 Plus as core-shell columns for high resolution and low backpressure, suitable for acids, bases and neutrals.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-coreshell-c8-hydrophobic-steroids-fats",
+    "label": "Hydrophobic compounds / steroids / fats",
+    "arabic": "مركبات كارهة للماء / ستيرويدات / دهون",
+    "match": { "packing": ["Supersil Coreshell"], "phase": ["C8"] },
+    "searchTerms": ["hydrophobic compounds", "moderately polar", "steroids", "fats", "core-shell", "c8"],
+    "reason": "PDF guide describes Supersil Coreshell C8 as moderate hydrophobicity/spatial selectivity with applications in hydrophobic compounds, moderately polar compounds, steroids and fats.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-coreshell-phenyl-aqueous-aromatics",
+    "label": "Core-shell phenyl aromatics / aqueous",
+    "arabic": "كور-شيل فينيل للعطريات / مائي",
+    "match": { "packing": ["Supersil Coreshell"], "phase": ["PH", "PH Plus", "Phenyl"] },
+    "searchTerms": ["polar aromatics", "100% aqueous", "aromatics", "double bonds", "core-shell", "broad pH"],
+    "reason": "PDF guide describes Supersil Coreshell PH/PH Plus as phenyl core-shell phases for aromatics and compatibility with 100% aqueous mobile phase systems.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-coreshell-biphenyl-pfp-cn-special-selectivity",
+    "label": "Special selectivity / isomers",
+    "arabic": "انتقائية خاصة / أيزومرات",
+    "match": { "packing": ["Supersil Coreshell"], "phase": ["BP", "Biphenyl", "PFP", "CN"] },
+    "searchTerms": ["biphenyl", "pfp", "cn", "aromatics", "polar compounds", "halogenated", "steroids", "isomers", "explosives", "difficult separated", "strong polar aromatics"],
+    "reason": "PDF guide describes Supersil Coreshell BP/PFP/CN as special-selectivity core-shell phases for aromatics, halogenated/isomeric compounds, strong polar compounds and related drug work.",
+    "confidence": "high"
+  },
+  {
+    "id": "supersil-coreshell-bio-macromolecules",
+    "label": "Core-shell bio macromolecules",
+    "arabic": "كور-شيل للجزيئات الحيوية الكبيرة",
+    "match": { "packing": ["Supersil Coreshell"], "nameContains": ["BIO"] },
+    "searchTerms": ["bio", "biological macromolecules", "proteins", "peptides", "amino acids", "hormones", "macromolecular compounds", "300A", "1000A", "oligonucleotides", "nucleotides", "polar acids", "polar bases"],
+    "reason": "PDF guide describes Supersil Coreshell BIO phases as 300/1000 Å columns for proteins, peptides, amino acids, hormones and macromolecular compounds.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-gpc-organic-polymers",
+    "label": "Organic SEC/GPC polymers",
+    "arabic": "SEC/GPC عضوي للبوليمرات",
+    "match": { "packing": ["Amber"], "phase": ["GPC"] },
+    "searchTerms": ["gpc", "organic sec", "polymer", "polystyrene", "polyolefin", "polyacrylate", "polysiloxane", "polycarbonate", "resin", "thf", "dmf", "dmac", "tcb", "nmp", "hfip"],
+    "reason": "PDF guide describes Amber GPC as PS/DVB organic SEC/GPC columns suitable for many organic solvents and polymer/resin molecular weight work.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-sec-biomolecules-polymers",
+    "label": "Aqueous SEC biomolecules",
+    "arabic": "SEC مائي للجزيئات الحيوية",
+    "match": { "packing": ["Amber"], "phase": ["SEC"] },
+    "searchTerms": ["sec", "aqueous sec", "proteins", "nucleic acids", "peptides", "oligonucleotides", "polysaccharides", "synthetic polymers", "bacteria", "viruses", "nanoparticles", "vaccine", "thyroglobulin", "monoclonal antibodies", "IgG", "bevacizumab", "Erbitux", "hydrophobic protein", "PEG-antibodies"],
+    "reason": "PDF guide describes Amber SEC/SEC Plus/SEC 3 µm/PMMA SEC families for biological molecules, hydrosoluble polymers, proteins, antibodies, vaccines and nanoparticles.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-sugar-fermentation-sugars-organic-acids",
+    "label": "Sugar / organic acids / fermentation",
+    "arabic": "سكريات / أحماض عضوية / تخمير",
+    "match": { "packing": ["Amber"], "phase": ["Sugar"] },
+    "searchTerms": ["sugar", "sugars", "sugar alcohols", "organic acids", "fermentation", "fruit juice", "corn syrup", "monosaccharide", "disaccharide", "trisaccharide", "tetrasaccharide", "glucose", "fructose", "sucrose", "lactose", "maltose", "mannose", "ribose", "arabinose", "stachyose", "cellobiose", "lactic acid", "formic acid", "succinic acid", "ethanol"],
+    "reason": "PDF guide describes Amber Sugar H/Ca/Pb/K/Na columns for fermentation products, fruit juices, organic acids, alcohols, sugars, corn syrup, dairy sugars, honey and oligosaccharides.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-protein-a-mab-quantification",
+    "label": "Protein A / mAb quantification",
+    "arabic": "Protein A / قياس mAb",
+    "match": { "packing": ["Amber"], "phase": ["Protein A"] },
+    "searchTerms": ["protein a", "monoclonal antibody", "mab", "antibody", "igg", "fc fusion", "cell line screening", "upstream bioprocess", "quality control", "CHO cells", "IgG4", "recombinant protein"],
+    "reason": "PDF guide describes Amber Protein A as a high-crosslinked PS/DVB Protein A column for rapid/accurate quantification of monoclonal antibody and Fc fusion proteins except IgG3.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-hic-adc-protein-fragments",
+    "label": "HIC / ADC / protein fragments",
+    "arabic": "HIC / ADC / أجزاء البروتين",
+    "match": { "packing": ["Amber"], "phase": ["HIC"] },
+    "searchTerms": ["hic", "hydrophobic interaction", "monoclonal antibody", "mab", "adc", "antibody drug conjugate", "protein fragments", "hepatitis B virus surface antigen", "ethyl", "propyl", "butyl", "phenyl"],
+    "reason": "PDF guide describes Amber HIC Ethyl/Propyl/Butyl/Phenyl as HIC columns for mAbs, ADCs and protein fragments with different hydrophobicity.",
+    "confidence": "high"
+  },
+  {
+    "id": "amber-ion-exchange-proteins-rna",
+    "label": "Bio ion exchange",
+    "arabic": "تبادل أيوني حيوي",
+    "match": { "packing": ["Amber"], "phase": ["SAX", "WAX", "SCX", "WCX"] },
+    "searchTerms": ["ion exchange", "sax", "wax", "scx", "wcx", "proteins", "cell lysate", "nucleotide", "polypeptide", "carbohydrate", "polysaccharide", "nanoparticles", "nanotubes", "RNA", "PEG", "Erbitux"],
+    "reason": "PDF guide describes Amber SAX/WAX/SCX/WCX as polymer ion-exchange columns for proteins, cell lysate, nucleotides, polypeptides, carbohydrates/polysaccharides and nanoparticles.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-amino-acids-aak-aap",
+    "label": "Dedicated amino acids",
+    "arabic": "أعمدة مخصصة للأحماض الأمينية",
+    "match": { "nameContains": ["AAK", "AAP", "Amino Acids"] },
+    "searchTerms": ["amino acids", "DNFB", "aldehyde ketone", "DNPH", "PITC", "derivatized amino acids"],
+    "reason": "PDF guide lists Elite AAK/AAP dedicated amino acid columns for DNFB/DNPH and PITC derivatized amino acid analysis.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-melamine-dairy",
+    "label": "Melamine / dairy products",
+    "arabic": "ميلامين / منتجات الألبان",
+    "match": { "nameContains": ["Tripolycyanamide", "MSP"] },
+    "searchTerms": ["melamine", "tripolycyanamide", "dairy", "raw milk", "GB/T 22388"],
+    "reason": "PDF guide lists Elite MSP Tripolycyanamide column for determination of melamine/tripolycyanamide in dairy products.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-ginseng",
+    "label": "Ginseng / ginsenosides",
+    "arabic": "جينسنغ / جينسينوسيدات",
+    "match": { "nameContains": ["Ginseng", "GIN"] },
+    "searchTerms": ["ginseng", "ginsenosides", "Rg1", "Re"],
+    "reason": "PDF guide lists EliteUQ GIN C18 Ginseng column for determination of Ginsenosides Rg1 and Re in ginseng.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-carbamate-pesticides",
+    "label": "Carbamate pesticides",
+    "arabic": "مبيدات كاربامات",
+    "match": { "nameContains": ["Carbamates", "ACO"] },
+    "searchTerms": ["carbamate pesticides", "aldicarb", "sodicarb", "carboxanil"],
+    "reason": "PDF guide lists Elite ACO Carbamates Pesticides column for aldicarb, sodicarb, carboxanil and related carbamate pesticide analysis.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-phthalates-rohs",
+    "label": "Phthalate plasticizers",
+    "arabic": "ملدنات الفثالات",
+    "match": { "nameContains": ["ROHS", "PAEs", "Phthalate"] },
+    "searchTerms": ["phthalate", "phthalates", "plasticizers", "PAEs", "ROHS"],
+    "reason": "PDF guide lists Elite ROHS PAEs column for separation and analysis of phthalate plasticizers.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-beta-lactam-antibiotics",
+    "label": "Beta-lactam antibiotics polymers",
+    "arabic": "بوليمرات مضادات بيتا لاكتام",
+    "match": { "nameContains": ["Sephadex", "G-10"] },
+    "searchTerms": ["beta lactam", "lactam antibiotics", "polymer impurity", "cefoperazone", "ceftiazone", "ceftazidime", "ceftriaxone"],
+    "reason": "PDF guide lists Sephadex G-10 dextran gel column for beta-lactam antibiotic polymer impurity analysis.",
+    "confidence": "high"
+  },
+  {
+    "id": "dedicated-vitamin-k1-zinc-reduction",
+    "label": "Vitamin K1 post-column reduction",
+    "arabic": "اختزال بعد العمود لفيتامين K1",
+    "match": { "nameContains": ["Zn", "Vitamin K1"] },
+    "searchTerms": ["vitamin K1", "zinc reduction", "post-column", "fluorescence", "reduction column"],
+    "reason": "PDF guide lists EliteUG Zn Powder Reduction Column for Vitamin K1 post-column conversion to a fluorescent reduced product.",
+    "confidence": "high"
+  },
+  {
+    "id": "bio-beads-sx3-organochlorine-pesticides",
+    "label": "Organochlorine pesticides / cleanup",
+    "arabic": "مبيدات كلورية عضوية / تنقية عينة",
+    "match": { "nameContains": ["Bio-Beads", "S-X3", "S X3"] },
+    "searchTerms": ["organochlorine pesticide", "organochlorine pesticides", "phthalic acid", "antioxidants", "semi-volatile organic compounds", "Sudan Red", "hydrophobic substances", "small organic polymers"],
+    "reason": "PDF guide lists EliteUQ Bio-Beads S-X3/Amber S-X3 for 22 organochlorine pesticide residues, phthalic acid, antioxidants, semi-volatile organics and Sudan Red residues.",
+    "confidence": "high"
+  },
+  {
+    "id": "sinopak-hss-aq-c18-uhplc-biogenic-amines",
+    "label": "UHPLC AQ-C18 / biogenic amines",
+    "arabic": "UHPLC AQ-C18 / أمينات حيوية",
+    "match": { "nameContains": ["HSS AQ-C18"] },
+    "searchTerms": ["uhplc", "100% aqueous", "food additives", "sorbic acid", "biological amines", "biogenic amines", "putrescine"],
+    "reason": "PDF guide describes SinoPak HSS AQ-C18 as high-strength silica AQ-C18 compatible with 100% aqueous mobile phases and suitable for UHPLC, food additives and biogenic amines.",
+    "confidence": "high"
+  },
+  {
+    "id": "agressif-c18-cost-effective",
+    "label": "Cost-effective C18",
+    "arabic": "C18 اقتصادي",
+    "match": { "nameContains": ["Agressif"] },
+    "searchTerms": ["cost effective", "c18", "routine", "general purpose"],
+    "reason": "PDF guide describes Agressif C18 as ultra-pure silica C18 with high cost effectiveness.",
     "confidence": "medium"
   }
 ]
