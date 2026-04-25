@@ -18,16 +18,17 @@
           <p class="eyebrow">Other brand replacement</p>
           <h1>Find the closest MME alternative.</h1>
           <p>Search by brand, product family, part number, phase, particle size, pore size, ID, and length. The result separates exact, close, and different specifications.</p>
+          <div class="hero-actions"><button class="button ghost" type="button" data-example-query="Agilent HC-C18 518915-902">Try Agilent SKU</button><button class="button ghost" type="button" data-example-query="Hitachi 889-0903">Try Hitachi SKU</button><button class="button ghost" type="button" data-example-query="Brownlee SPP C18 N9308417">Try Brownlee SKU</button></div>
         </div>
         <div class="equivalent-tools-panel">
-          <h3>Helpful tools</h3>
+          <h3>Equivalent tools</h3>
           <ul>
-            <li><strong>Part-number search:</strong> paste the competitor SKU when available.</li>
-            <li><strong>Specification builder:</strong> enter phase, particle, pore, ID, and length if the part number is unknown.</li>
-            <li><strong>Exact/close/different table:</strong> review where the equivalent is identical or only similar.</li>
-            <li><strong>Method validation reminder:</strong> closest equivalents are starting points, not automatic validated replacements.</li>
-            <li><strong>Request technical review:</strong> add the suggested MME column to quote and include your method details.</li>
+            <li>Paste the competitor SKU for the strongest match.</li>
+            <li>Use the builder when the part number is missing.</li>
+            <li>Review exact, close, and different specifications before quoting.</li>
+            <li>Add method details in the quote for technical review.</li>
           </ul>
+          <div class="dashboard-summary replacement-stats" id="replacementStats"></div>
         </div>
       </section>
 
@@ -51,14 +52,16 @@
             <label>Length<input id="builderLength" type="text" placeholder="150"></label>
             <button class="button primary" id="buildReplacementQuery" type="button">Build search</button>
           </div>
+          <div class="replacement-assist-grid">
+            <article><h4>When fit is “close”</h4><p>Particle or pore values may be commercially similar but not identical. Use this as a shortlist, then validate your method.</p></article>
+            <article><h4>When no SKU is found</h4><p>Search by brand + phase + dimensions, for example: C18 2.7um 120A 4.6 150.</p></article>
+            <article><h4>For technical review</h4><p>Add the MME option to quote and include mobile phase, flow, detector, and sample type.</p></article>
+          </div>
           <div class="replacement-results" id="replacementResults"></div>
         </div>
       </section>
     </main>
     <script src="verified-competitors.js"></script>
-    <script src="app-final.js"></script>
-    <script src="app-enhance-rules.js"></script>
-    <script src="app-match-quality.js"></script>
-    <script src="replacement-page.js"></script>
+    <script src="replacement-engine.js"></script>
   </body>
 </html>
