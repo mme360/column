@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MME Dashboard | Quotes, Favorites & Orders</title>
-    <meta name="description" content="Customer dashboard for MME column quotes, favorites, previous orders, and recommendations.">
+    <meta name="description" content="Customer dashboard for MME column quotes, favorites, previous orders, replacement records, and recommendations.">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
-      <div class="brand"><span class="brand-mark">MME</span><div><strong>Customer Dashboard</strong><span>Quotes, favorites, orders and recommendations</span></div></div>
+      <div class="brand"><span class="brand-mark">MME</span><div><strong>Customer Dashboard</strong><span>Quotes, favorites, replacements, orders and recommendations</span></div></div>
       <nav aria-label="Primary"><a href="index.html#catalog">Catalog</a><a href="replacement.html">Replacement</a><a href="dashboard.html">Dashboard</a><a href="index.html#cart">Quote</a></nav>
     </header>
     <main class="dashboard-page">
@@ -17,21 +17,26 @@
         <div class="hero-copy">
           <p class="eyebrow">Customer workspace</p>
           <h1>Manage your column work in one place.</h1>
-          <p>Track current quote items, saved favorites, previous quotations, reorder candidates, and recommended accessories.</p>
+          <p>Track current quote items, saved favorites, original competitor columns, selected MME equivalents, previous quotations, reorder candidates, and recommendations.</p>
           <div class="hero-actions"><a class="button primary" href="index.html#catalog">Find columns</a><a class="button ghost" href="replacement.html">Find equivalent</a><button class="button ghost" type="button" id="exportDashboard">Copy dashboard summary</button></div>
         </div>
         <div class="dashboard-summary">
           <div><span>Current quote</span><strong id="dashQuoteCount">0</strong></div>
           <div><span>Favorites</span><strong id="dashFavoriteCount">0</strong></div>
+          <div><span>Replacement records</span><strong id="dashReplacementCount">0</strong></div>
           <div><span>Previous orders</span><strong id="dashOrderCount">0</strong></div>
           <div><span>Suggested items</span><strong id="dashSuggestionCount">0</strong></div>
         </div>
       </section>
 
-      <section class="dashboard-grid">
+      <section class="dashboard-grid dashboard-grid-wide">
         <article class="dashboard-card">
           <div class="dashboard-card-head"><div><p class="eyebrow">Current quote</p><h2>Quote basket</h2></div><a class="button ghost" href="index.html#cart">Open quote</a></div>
           <div id="dashboardQuoteItems" class="dashboard-list"></div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card-head"><div><p class="eyebrow">Equivalent history</p><h2>Original + MME equivalent</h2></div><a class="button ghost" href="replacement.html">Add replacement</a></div>
+          <div id="dashboardReplacements" class="dashboard-list"></div>
         </article>
         <article class="dashboard-card">
           <div class="dashboard-card-head"><div><p class="eyebrow">Saved</p><h2>Favorites</h2></div><a class="button ghost" href="index.html#catalog">Add more</a></div>
