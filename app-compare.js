@@ -2,8 +2,8 @@
 (function () {
   if (!state.compare) state.compare = new Map();
 
-  function compareButtonLabel(product) {
-    return state.compare.has(product.id) ? 'In compare' : 'Compare';
+  function iconButton(className, label, icon, active) {
+    return `<button class="icon-button ${className} ${active ? 'active' : ''}" type="button" title="${label}" aria-label="${label}">${icon}</button>`;
   }
 
   card = function card(product) {
@@ -13,17 +13,14 @@
       <div class="product-top">
         <span class="category">${esc(product.category)}</span>
         <div class="quick-actions">
-          <button class="icon-button favorite ${state.fav.has(product.id) ? 'active' : ''}" type="button" title="Save favorite">♡</button>
+          ${iconButton('favorite', state.fav.has(product.id) ? 'Saved to favorites' : 'Save to favorites', '♡', state.fav.has(product.id))}
+          ${iconButton('product-quote', 'Add to quote', '+', false)}
+          ${iconButton('product-compare', state.compare.has(product.id) ? 'Remove from compare' : 'Compare', '⇄', state.compare.has(product.id))}
         </div>
       </div>
       <p class="code">Code ${esc(product.code)}</p>
       <h3>${esc(product.name)}</h3>
-      <div class="use-badges">${badges(product)}</div>
-      <dl class="specs icon-specs">${specHtml(product)}</dl>
-      <div class="card-actions">
-        <button class="button product-quote" type="button">Add to quote</button>
-        <button class="button ghost product-compare ${state.compare.has(product.id) ? 'active' : ''}" type="button">${compareButtonLabel(product)}</button>
-      </div>`;
+      <dl class="specs icon-specs">${specHtml(product)}</dl>`;
     node.querySelector('.favorite').onclick = () => toggleFav(product);
     node.querySelector('.product-quote').onclick = () => addCart(product);
     node.querySelector('.product-compare').onclick = () => toggleCompare(product);
@@ -42,9 +39,12 @@
     if (product) toggleCompare(product);
   };
 
-  const originalRow = row;
   row = function row(product) {
-    return `<tr><td>${esc(product.name)}</td><td>${esc(product.code)}</td><td>${esc(product.category)}</td><td>${esc(product.packing)}</td><td>${esc(product.phase)}</td><td>${badges(product)}</td><td>${esc(product.particle)} um</td><td>${esc(product.pore || '-')}</td><td>${esc(product.diameter)} mm</td><td>${esc(product.length)} mm</td><td class="table-actions"><button onclick="toggleFavoriteById('${product.id}')">${state.fav.has(product.id) ? 'Saved' : 'Favorite'}</button><button onclick="toggleCompareById('${product.id}')">${state.compare.has(product.id) ? 'In compare' : 'Compare'}</button><button onclick="addToCartById('${product.id}')">Quote</button></td></tr>`;
+    return `<tr><td>${esc(product.name)}</td><td>${esc(product.code)}</td><td>${esc(product.category)}</td><td>${esc(product.packing)}</td><td>${esc(product.phase)}</td><td>${esc(product.particle)} um</td><td>${esc(product.pore || '-')}</td><td>${esc(product.diameter)} mm</td><td>${esc(product.length)} mm</td><td class="table-actions"><button onclick="toggleFavoriteById('${product.id}')">${state.fav.has(product.id) ? 'Saved' : 'Favorite'}</button><button onclick="toggleCompareById('${product.id}')">${state.compare.has(product.id) ? 'In compare' : 'Compare'}</button><button onclick="addToCartById('${product.id}')">Quote</button></td></tr>`;
+  };
+
+  window.renderTable = function renderTable(host, rows) {
+    host.innerHTML = `<div class="table-wrap"><table class="product-table"><thead><tr><th>Product</th><th>Code</th><th>Category</th><th>Packing</th><th>Phase</th><th>Particle</th><th>Pore</th><th>ID</th><th>Length</th><th>Actions</th></tr></thead><tbody>${rows.map((result) => row(result.item)).join('')}</tbody></table></div>`;
   };
 
   window.renderCompare = function renderCompare() {
@@ -66,12 +66,11 @@
       ['Particle', 'particle'],
       ['Pore', 'pore'],
       ['ID', 'diameter'],
-      ['Length', 'length'],
-      ['Applications', 'applications']
+      ['Length', 'length']
     ];
     host.innerHTML = `
       <div class="compare-toolbar">
-        <strong>${products.length} product${products.length === 1 ? '' : 's'} selected</strong>
+        <span>${products.length} product${products.length === 1 ? '' : 's'} selected</span>
         <button class="button ghost" type="button" onclick="clearCompare()">Clear compare</button>
       </div>
       <div class="table-wrap">
@@ -80,7 +79,7 @@
             <tr><th>Specification</th>${products.map((product) => `<th>${esc(product.code)}<br><button type="button" onclick="toggleCompareById('${product.id}')">Remove</button></th>`).join('')}</tr>
           </thead>
           <tbody>
-            ${specs.map(([label, field]) => `<tr><th>${esc(label)}</th>${products.map((product) => `<td>${field === 'applications' ? badges(product) : esc(product[field] || '-')}</td>`).join('')}</tr>`).join('')}
+            ${specs.map(([label, field]) => `<tr><th>${esc(label)}</th>${products.map((product) => `<td>${esc(product[field] || '-')}</td>`).join('')}</tr>`).join('')}
             <tr><th>Action</th>${products.map((product) => `<td><button class="button primary" type="button" onclick="addToCartById('${product.id}')">Add to quote</button></td>`).join('')}</tr>
           </tbody>
         </table>
