@@ -7,8 +7,10 @@ const poreNum = (value) => {
   return match ? Number(match[0]) : 0;
 };
 const quoteKey = 'mmeQuoteDraft';
+const replacementRecordKey = 'mmeReplacementRecords';
 let catalog = [];
 let competitors = [];
+let latestMatches = new Map();
 
 function readJson(key, fallback) {
   try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); }
@@ -77,23 +79,80 @@ function addToQuote(product) {
   if (existing) existing.qty = Number(existing.qty || 1) + 1;
   else quote.push({ id: product.id, code: product.code, name: product.name, phase: product.phase, particle: product.particle, pore: product.pore, diameter: product.diameter, length: product.length, qty: 1, addedAt: new Date().toISOString() });
   writeJson(quoteKey, quote);
-  alert('Added to quote. Open Dashboard to review saved quote items.');
 }
-window.addReplacementToQuote = function addReplacementToQuote(id) {
-  const product = catalog.find((item) => item.id === id);
-  if (product) addToQuote(product);
+function compactCompetitor(column) {
+  return {
+    brand: column.brand,
+    family: column.family,
+    name: column.name || column.family,
+    partNumber: column.partNumber || '',
+    phase: column.phase || '',
+    particle: column.particle || '',
+    pore: column.pore || '',
+    diameter: column.diameter || '',
+    length: column.length || '',
+    mode: column.mode || '',
+    source: column.source || ''
+  };
+}
+function compactProduct(product) {
+  return {
+    id: product.id,
+    code: product.code,
+    name: product.name,
+    category: product.category,
+    packing: product.packing,
+    phase: product.phase,
+    particle: product.particle,
+    pore: product.pore,
+    diameter: product.diameter,
+    length: product.length
+  };
+}
+function saveReplacementRecord(competitor, best, addQuoteToo = false) {
+  const records = readJson(replacementRecordKey, []);
+  const record = {
+    id: `replacement-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    savedAt: new Date().toISOString(),
+    percent: best.percent,
+    original: compactCompetitor(competitor),
+    equivalent: compactProduct(best.product),
+    details: best.details.map((row) => ({ label: row.label, original: row.competitor, equivalent: row.mme, quality: row.quality, result: row.result }))
+  };
+  records.unshift(record);
+  writeJson(replacementRecordKey, records.slice(0, 100));
+  if (addQuoteToo) addToQuote(best.product);
+  alert(addQuoteToo ? 'Saved replacement record and added MME equivalent to quote.' : 'Saved replacement record to Dashboard.');
+}
+window.addReplacementToQuote = function addReplacementToQuote(matchId) {
+  const match = latestMatches.get(matchId);
+  if (!match) return;
+  addToQuote(match.best.product);
+  alert('Added MME equivalent to quote.');
 };
-function renderComparison(competitor, best) {
+window.saveReplacementToDashboard = function saveReplacementToDashboard(matchId) {
+  const match = latestMatches.get(matchId);
+  if (match) saveReplacementRecord(match.competitor, match.best, false);
+};
+window.saveReplacementAndQuote = function saveReplacementAndQuote(matchId) {
+  const match = latestMatches.get(matchId);
+  if (match) saveReplacementRecord(match.competitor, match.best, true);
+};
+function renderComparison(competitor, best, matchId) {
   const exactCount = best.details.filter((row) => row.quality === 'exact').length;
   const closeCount = best.details.filter((row) => row.quality === 'close').length;
   return `
     <div class="equiv-summary">
       <span class="match-score">${best.percent}% overall fit</span>
       <strong>Closest MME: ${esc(best.product.code)} - ${esc(best.product.name)}</strong>
-      <button class="button ghost" type="button" onclick="addReplacementToQuote('${best.product.id}')">Add MME column to quote</button>
+      <div class="equiv-actions">
+        <button class="button ghost" type="button" onclick="addReplacementToQuote('${matchId}')">Add equivalent to quote</button>
+        <button class="button ghost" type="button" onclick="saveReplacementToDashboard('${matchId}')">Save original + equivalent</button>
+        <button class="button primary" type="button" onclick="saveReplacementAndQuote('${matchId}')">Save record + quote</button>
+      </div>
     </div>
     <table class="product-table compare-equivalent">
-      <thead><tr><th>Specification</th><th>${esc(competitor.brand)} column</th><th>MME equivalent</th><th>Result</th></tr></thead>
+      <thead><tr><th>Specification</th><th>${esc(competitor.brand)} original</th><th>MME equivalent</th><th>Result</th></tr></thead>
       <tbody>${best.details.map((row) => `<tr class="spec-${row.quality}"><td>${esc(row.label)}</td><td>${esc(row.competitor)}</td><td>${esc(row.mme)}</td><td>${esc(row.result)}</td></tr>`).join('')}</tbody>
     </table>
     <p class="equiv-why">Why: ${exactCount} exact specification match(es), ${closeCount} close specification match(es). Close means commercially similar, not identical. Use this as a starting point and validate your method.</p>`;
@@ -101,6 +160,7 @@ function renderComparison(competitor, best) {
 function renderResults(query) {
   const host = $('#replacementResults');
   if (!host) return;
+  latestMatches = new Map();
   const terms = norm(query).split(' ').filter(Boolean);
   if (!terms.length) {
     host.innerHTML = '<div class="dashboard-empty">Paste a competitor part number or build a specification search.</div>';
@@ -114,8 +174,10 @@ function renderResults(query) {
     host.innerHTML = '<div class="dashboard-empty">No competitor match found yet. Try brand + phase + dimensions, or use the builder.</div>';
     return;
   }
-  host.innerHTML = matches.map(({ column }) => {
+  host.innerHTML = matches.map(({ column }, index) => {
     const best = bestEquivalent(column);
+    const matchId = `match-${index}`;
+    latestMatches.set(matchId, { competitor: column, best });
     return `<div class="replacement-card">
       <div class="competitor-match">
         <h4>${esc(column.brand)} ${esc(column.name || column.family)}</h4>
@@ -123,7 +185,7 @@ function renderResults(query) {
         <p>${esc(column.notes || '')}</p>
         <small>${esc(column.source || '')}</small>
       </div>
-      <div class="mme-match">${renderComparison(column, best)}</div>
+      <div class="mme-match">${renderComparison(column, best, matchId)}</div>
     </div>`;
   }).join('');
 }
@@ -134,7 +196,7 @@ async function initReplacement() {
   $('#replacementStats').innerHTML = `
     <div><span>MME products</span><strong>${catalog.length.toLocaleString()}</strong></div>
     <div><span>Competitor records</span><strong>${competitors.length.toLocaleString()}</strong></div>
-    <div><span>Result quality</span><strong>Exact / Close / Different</strong></div>`;
+    <div><span>Saved records</span><strong>${readJson(replacementRecordKey, []).length.toLocaleString()}</strong></div>`;
   const input = $('#replacementInput');
   input?.addEventListener('input', () => renderResults(input.value));
   $('#buildReplacementQuery')?.addEventListener('click', () => {
